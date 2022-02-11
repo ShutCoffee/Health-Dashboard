@@ -1,8 +1,11 @@
 import csv
+import pandas as pd
+import numpy as np
 
 header = []
 rows = []
 groupedTrainings = []
+np_array = []
 
 def parseFile():
     file = open('strong.csv')
@@ -23,10 +26,21 @@ def groupByTraining():
                 appended = True
         if(not appended):
             groupedTrainings.append([rows[i]])
+    for training in groupedTrainings:
+        for i in range(0,3):
+            training.insert(i, training[i][i])
+        for i in range(3, len(training)):
+            del training[i][4]
+            for j in range(0,3):
+                del training[i][0]
+            for h in range(0,5):
+                del training[i][-1]
+
 
 def main():
     parseFile()
     groupByTraining()
+    print(groupedTrainings[-1])
     
     
 
