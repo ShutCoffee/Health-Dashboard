@@ -3,15 +3,12 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
 import pandas as pd
+import strong_evaluation
 
 app = dash.Dash()
 
-df = pd.read_csv(
-    "https://raw.githubusercontent.com/ThuwarakeshM/geting-started-with-plottly-dash/main/life_expectancy.csv"
-)
-
 fig = px.scatter(
-    df,
+    strong_evaluation.df,
     x="GDP",
     y="Life expectancy",
     size="Population",
